@@ -4,9 +4,9 @@ import { Text, View } from 'react-native';
 import Menu, { MenuDivider, MenuItem } from 'react-native-material-menu';
 import { TouchableRipple } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Routes } from './../Navigation/Routes';
+import { Routes } from '../Navigation/Routes';
 import { Colors } from '../Themes/Colors';
-import { FontType } from './../Themes/Fonts';
+import { FontType } from '../Themes/Fonts';
 
 
 const HeaderComponent = ({ title, navigation }) => {

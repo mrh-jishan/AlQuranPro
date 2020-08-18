@@ -2,7 +2,7 @@ import I18n from 'i18next';
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { HeaderComponent } from '../Components';
+import { Header } from '../Components';
 import { About, QuranDetail, QuranList, Settings, SplashScreen } from '../Pages';
 import { Colors } from '../Themes/Colors';
 import { FontType } from '../Themes/Fonts';
@@ -23,7 +23,7 @@ const AppStack = createStackNavigator(
       screen: QuranList,
       navigationOptions: {
         header: props => (
-          <HeaderComponent title={I18n.t('AppTitle')} {...props} />
+          <Header title={I18n.t('AppTitle')} {...props} />
         ),
       },
     },

@@ -1,6 +1,5 @@
-import { BASE_URL } from 'react-native-dotenv';
+const quranList = `https://quran.kemenag.go.id/index.php/api/v1/surat`;
 
-const quranList = `${BASE_URL}v1/surat`;
-const quranDetail = (surahId, jmlAyat) =>
-  `${BASE_URL}v1/ayatweb/${surahId}/0/0/${jmlAyat}`;
+const quranDetail = (surahId, jmlAyat) => `https://quran.kemenag.go.id/index.php/api/v1/ayatweb/${surahId}/0/0/${jmlAyat}`;
+
 export { quranList, quranDetail };

@@ -1,11 +1,20 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { FontType } from './../Themes/Fonts';
 
 
 const About = () => {
     return (
-        <Text>About Page</Text>
+        <View style={Styles.container}>
+            <Image
+                source={require('./../Assets/Images/ic_icon.png')}
+                style={Styles.appImage}
+                resizeMode="stretch"
+            />
+            <Text style={Styles.appName}>Al-Quran Mobile</Text>
+            <Text style={Styles.appVersion}>Version 1.0</Text>
+            <Text style={Styles.appAuthor}>Robiul Hassan</Text>
+        </View>
     )
 }
 
