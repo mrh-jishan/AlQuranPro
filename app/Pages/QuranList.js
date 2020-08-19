@@ -3,6 +3,7 @@ import { FlatList, StyleSheet } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { connect } from 'react-redux';
 import { CardSurahList, ModalDialog, Separator } from '../Components';
+import { Routes } from './../Navigation/Routes';
 import { getQuranList } from './../Redux/Actions/QuranList/QuranList';
 import { keyExtractor } from './../Utils/Helper';
 
