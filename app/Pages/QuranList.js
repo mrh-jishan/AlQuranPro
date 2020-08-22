@@ -20,7 +20,7 @@ const QuranList = ({ getQuranList, navigation, isError, errorMessage, data, refr
     }, [getQuranList]);
 
     const goToDetailpage = dataSurah => {
-        navigation.navigate(Routes.QuranDetail, { dataSurah });
+        navigation.navigate(Routes.QuranDetail, dataSurah);
     };
 
     const renderListEmpty = () => {
@@ -84,7 +84,4 @@ const mapDispatchToProps = dispatch => ({
     getQuranList: () => dispatch(getQuranList()),
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(QuranList);
+export default connect(mapStateToProps, mapDispatchToProps)(QuranList);

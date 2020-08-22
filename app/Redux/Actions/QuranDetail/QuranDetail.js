@@ -1,17 +1,13 @@
-import {
-  REQ_QURAN_DETAIL,
-  REQ_QURAN_DETAIL_SUCCESS,
-  REQ_QURAN_DETAIL_FAILURE,
-} from '../Types';
 import axios from 'axios';
-import { quranDetail } from '../../../Utils/EndPoints';
 import { Constants } from '../../../Utils/Constants';
+import { quranDetail } from '../../../Utils/EndPoints';
+import { REQ_QURAN_DETAIL, REQ_QURAN_DETAIL_FAILURE, REQ_QURAN_DETAIL_SUCCESS } from '../Types';
 
 const getDetailQuran = payload => async dispatch => {
-  const { surahId, countAyat } = payload;
+  const { id, count_ayat } = payload;
   dispatch({ type: REQ_QURAN_DETAIL });
   try {
-    const response = await axios.get(quranDetail(surahId, countAyat));
+    const response = await axios.get(quranDetail(id, count_ayat));
     if (response?.status === Constants.RESPONSE_CODE.SUCCESS) {
       dispatch({
         type: REQ_QURAN_DETAIL_SUCCESS,

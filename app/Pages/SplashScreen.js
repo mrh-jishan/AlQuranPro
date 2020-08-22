@@ -1,12 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React from 'react';
-import { Alert, BackHandler, View } from 'react-native';
+import { Alert, BackHandler, StyleSheet, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Routes } from './../Navigation/Routes';
 import { setLang } from './../Redux/Actions/Language/Language';
 import { Constants } from './../Utils/Constants';
 import { isNetworkConnected } from './../Utils/Helper';
-import { resetNavigationTo } from './../Utils/Navigations';
 import { changeLanguage } from './../Utils/Translation';
 
 
@@ -45,17 +44,15 @@ const SplashScreenPage = props => {
   const navigate = React.useCallback(
     async screen => {
       const { navigation } = props;
-
-      const resetNavigation = resetNavigationTo(screen);
       try {
         await isNetworkConnected();
         setTimeout(() => {
-          navigation.dispatch(resetNavigation);
+          navigation.navigate('HomePage');
         }, 1000);
       } catch (error) {
         Alert.alert(
-          'Peringatan',
-          'Nampaknya Anda sedang offline, mohon nyalakan data seluler untuk melanjutkan.',
+          'Warning',
+          'It seems that you are offline, please turn on cellular data to continue.',
           [{ text: 'OK', onPress: () => BackHandler.exitApp() }],
           { cancelable: false },
         );
@@ -64,7 +61,19 @@ const SplashScreenPage = props => {
     [props],
   );
 
-  return <View />;
+  return (
+    <View style={Styles.container}>
+      <Text>Loading...</Text>
+    </View>
+  );
 };
+
+const Styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+});
 
 export default SplashScreenPage;

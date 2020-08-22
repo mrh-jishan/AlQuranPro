@@ -1,8 +1,8 @@
 const Routes = {
-  AboutPage: 'AboutPage',
+  AboutPage: 'About',
   QuranList: 'QuranList',
   QuranDetail: 'QuranDetail',
-  SettingsPage: 'SettingsPage',
+  SettingsPage: 'Settings',
   SplashScreen: 'SplashScreen',
 };
 

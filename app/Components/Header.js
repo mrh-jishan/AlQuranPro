@@ -39,7 +39,9 @@ const HeaderComponent = ({ title, navigation }) => {
 
     return (
         <View style={[Styles.headerContainer, Styles.headerWhite]}>
-            <Text style={Styles.title}>{title}</Text>
+            <View style={Styles.title}>
+                <Text style={Styles.text}>{title}</Text>
+            </View>
             <TouchableRipple onPress={() => null} rippleColor={Colors.rippleColor}>
                 <View style={Styles.viewRowPoint}>
                     <Menu ref={setMenuRef} button={renderButton()} animationDuration={0}>
@@ -79,6 +81,11 @@ const Styles = {
         resizeMode: 'stretch',
     },
     title: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    text: {
         color: Colors.black,
         fontFamily: FontType.semiBold,
         fontSize: 20,

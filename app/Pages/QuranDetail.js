@@ -45,21 +45,11 @@ function QuranDetail(props) {
     ];
 
     const renderDetailSurah = async () => {
-        const { getDetailQuran, navigation } = props;
-
-        const surahId = get(navigation, 'state.params.dataSurah.id');
-        const countAyat = get(navigation, 'state.params.dataSurah.count_ayat');
-
-        const payload = {
-            surahId,
-            countAyat,
-        };
-
-        await getDetailQuran(payload);
+        const { getDetailQuran, route } = props;
+        await getDetailQuran(route.params);
     };
 
     const openBottomSheet = item => () => {
-        console.log(item);
         setRbSheetData(item);
         refRBSheet.current.open();
     };
@@ -112,6 +102,7 @@ function QuranDetail(props) {
     };
 
     const renderCardContent = ({ item }) => {
+        console.log('item: ',item);
         return (
             <CardAyatList
                 ayatNumber={item?.aya_number}
