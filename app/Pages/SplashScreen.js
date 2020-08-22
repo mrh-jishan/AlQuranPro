@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
+import { CommonActions } from '@react-navigation/native';
 import React from 'react';
 import { Alert, BackHandler, StyleSheet, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
@@ -7,7 +8,6 @@ import { setLang } from './../Redux/Actions/Language/Language';
 import { Constants } from './../Utils/Constants';
 import { isNetworkConnected } from './../Utils/Helper';
 import { changeLanguage } from './../Utils/Translation';
-
 
 const SplashScreenPage = props => {
   const dispatch = useDispatch();
@@ -43,11 +43,17 @@ const SplashScreenPage = props => {
 
   const navigate = React.useCallback(
     async screen => {
-      const { navigation } = props;
       try {
         await isNetworkConnected();
         setTimeout(() => {
-          navigation.navigate('HomePage');
+          props.navigation.dispatch(
+            CommonActions.reset({
+              index: 0,
+              routes: [
+                { name: 'HomePage' },
+              ],
+            })
+          );
         }, 1000);
       } catch (error) {
         Alert.alert(

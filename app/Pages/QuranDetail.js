@@ -21,6 +21,11 @@ function QuranDetail(props) {
         renderDetailSurah();
     }, []);
 
+
+    useEffect(() => {
+        setTitleOptions();
+    }, []);
+
     const quranOptions = [
         {
             icon: 'play',
@@ -47,7 +52,25 @@ function QuranDetail(props) {
     const renderDetailSurah = async () => {
         const { getDetailQuran, route } = props;
         await getDetailQuran(route.params);
-    };
+    }
+
+    const setTitleOptions = async () => {
+        const { route, navigation } = props;
+        const suratName = route.params.surat_name;
+        const suratArabic = route.params.surat_text;
+        const suratTranslate = route.params.surat_terjemahan;
+        const countAyat = route.params.count_ayat;
+        navigation.setOptions({
+            title: <HeaderSurah
+                suratName={suratName}
+                suratArabic={suratArabic}
+                suratTranslate={suratTranslate}
+                countAyat={countAyat}
+            />
+        }
+        )
+    }
+
 
     const openBottomSheet = item => () => {
         setRbSheetData(item);
@@ -102,7 +125,6 @@ function QuranDetail(props) {
     };
 
     const renderCardContent = ({ item }) => {
-        console.log('item: ',item);
         return (
             <CardAyatList
                 ayatNumber={item?.aya_number}
@@ -177,29 +199,6 @@ function QuranDetail(props) {
             </Fragment>
         );
 }
-
-QuranDetail.navigationOptions = ({
-    navigation: {
-        state: {
-            params: { dataSurah },
-        },
-    },
-}) => {
-    const suratName = dataSurah.surat_name;
-    const suratArabic = dataSurah.surat_text;
-    const suratTranslate = dataSurah.surat_terjemahan;
-    const countAyat = dataSurah.count_ayat;
-    return {
-        headerTitle: (
-            <HeaderSurah
-                suratName={suratName}
-                suratArabic={suratArabic}
-                suratTranslate={suratTranslate}
-                countAyat={countAyat}
-            />
-        ),
-    };
-};
 
 const Styles = StyleSheet.create({
     bsContainer: {
